@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "verify.h": "c",
+        "math.h": "c",
+        "cpucycles.h": "c",
+        "stdint.h": "c",
+        "poly_mul.h": "c"
+    }
+}

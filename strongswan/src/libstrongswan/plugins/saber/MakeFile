@@ -1,0 +1,30 @@
+AM_CPPFLAGS = \
+	-I$(top_srcdir)/src/libstrongswan
+
+AM_CFLAGS = \
+	$(PLUGIN_CFLAGS)
+
+
+noinst_LTLIBRARIES = libsaber.la
+libsaber_la_SOURCES = \
+	saber.h saber.c \
+	saber_params.h saber_params.c \
+	pem.h pem.c \
+	pack_unpack.h pack_unpack.c \
+	cbd.h cbd.c \
+	poly.h poly.c \
+	poly_mul.h poly_mul.c \
+	verify.h verify.c
+
+if MONOLITHIC
+noinst_LTLIBRARIES += libstrongswan-saber.la
+else
+plugin_LTLIBRARIES = libstrongswan-saber.la
+endif
+
+libstrongswan_saber_la_SOURCES = \
+	saber_plugin.h saber_plugin.c
+
+libstrongswan_saber_la_LDFLAGS = -module -avoid-version
+
+libstrongswan_saber_la_LIBADD = libsaber.la
